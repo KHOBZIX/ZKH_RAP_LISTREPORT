@@ -1,0 +1,50 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo:{ 
+
+typeName: 'Purchase Order',
+typeNamePlural: 'Purchase Orders',
+description:{ 
+label: 'Manage Purchase Orders',
+type: #STANDARD
+}
+
+}
+annotate entity ZC_PurchaseHeader_Price
+    with 
+{
+    @UI.lineItem: [{ position: 10,label: 'Purchase Order',importance: #HIGH }]
+    @UI.selectionField: [{ position: 10 }]
+    PoHeader;
+
+//    PoDesc;
+    @UI.lineItem: [{ position: 30,label: 'Order Type' }]  
+    @EndUserText.label: 'Purchase Order Type'
+    @UI.selectionField: [{ position: 20 }]  
+    @Consumption.valueHelpDefinition: [{ entity :{ name: 'ZC_OrderTypeF4Help' ,element: 'PoType'}  }]
+    PoType;
+//    TotalProductPrice;
+//    PriceUnit;
+    @UI.lineItem: [{ position: 40,label: 'Company' }]
+    @UI.selectionField: [{ position: 30 }]   
+    Company;
+    @UI.lineItem: [{ position: 50,label: 'Organization' }]   
+    PoOrg;
+    @UI.lineItem: [{ position: 60,label: 'Supplier',type: #AS_CONTACT,value: '_SupplierC'}]   
+    @EndUserText.label: 'Vendor'
+    @UI.selectionField: [{ position: 40 }]
+    @Consumption.valueHelpDefinition: [{ entity :{ name: 'ZC_SUPPLIERF4Help' ,element: 'SupplierName'}  }]
+    SupplierName;
+    @UI.lineItem: [{ position: 70,label: 'Status' }]
+    StatusDesc;
+//    Imageurl;
+//    Createdby;
+//    Createat;
+//    Changerby;
+//    Changeat;
+//    /* Associations */
+//    _OderType;
+//    _PurchaseItems;
+//    _Supplier;element_name;
+//    
+} 

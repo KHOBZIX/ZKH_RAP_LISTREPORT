@@ -1,0 +1,15 @@
+@Metadata.layer: #CORE
+annotate entity ZC_SUPPLIER
+    with 
+{
+    @UI.lineItem: [{ position: 10,label: 'Supplier Number'}]
+    Supplierid;
+    @UI.lineItem: [{ position: 20,label: 'Supplier Name' }]
+    SupplierName;
+//    EmailAddress;
+//    PhoneNumber;
+//    FaxNumber;
+//    WebAddress;
+//    LocalLastChangedBy;
+    
+}

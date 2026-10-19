@@ -1,0 +1,8 @@
+@EndUserText.label: 'Service Purchase Orders'
+define service ZSD_PurchaserOrders {
+  expose ZC_PurchaseHeader_Price;
+  expose ZC_PurchaseItems_Quantity;
+  expose ZC_SUPPLIERF4Help;
+  expose ZC_OrderTypeF4Help;
+  expose ZC_SUPPLIER;
+}
