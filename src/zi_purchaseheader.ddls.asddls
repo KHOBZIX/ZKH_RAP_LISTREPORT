@@ -17,6 +17,10 @@ association [1] to ZC_SUPPLIER as _SupplierC on $projection.Supplier = _Supplier
     supplier as Supplier,
     _Supplier.SupplierName as SupplierName,
     _OderType.IsActive as Status,
+     @Semantics.amount.currencyCode: 'PriceUnit'
+    sum( _PurchaseItems.ProductPrice ) as TotalProductPrice, 
+    _PurchaseItems.PriceUnit as PriceUnit,
+    _OderType.Description as OTDescription,
     imageurl as Imageurl,
     createdby as Createdby,
     createat as Createat,
@@ -27,3 +31,20 @@ association [1] to ZC_SUPPLIER as _SupplierC on $projection.Supplier = _Supplier
     _Supplier,
     _SupplierC
 }
+group by
+    po_header,
+    po_desc,
+    po_type,
+    company,
+    po_org,
+    supplier,
+    _Supplier.SupplierName,
+    _OderType.IsActive,
+    _OderType.Description,
+    imageurl,
+    createdby,
+    createat,
+    changerby,
+    changeat,
+    _PurchaseItems.PriceUnit
+

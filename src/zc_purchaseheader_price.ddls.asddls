@@ -15,10 +15,9 @@ define view entity ZC_PurchaseHeader_Price as select from zi_PurchaseHeader
     @Search.ranking: #HIGH  
     @EndUserText.label: 'Description'  
     PoDesc,
+    @ObjectModel.text.element: [ 'OTDescription' ]
     PoType,
-     @Semantics.amount.currencyCode: 'PriceUnit'
-    sum( _PurchaseItems.ProductPrice ) as TotalProductPrice, 
-    _PurchaseItems.PriceUnit as PriceUnit,
+    OTDescription,
     Company,
     PoOrg,
     @Search.defaultSearchElement: true
@@ -31,6 +30,17 @@ define view entity ZC_PurchaseHeader_Price as select from zi_PurchaseHeader
     when '' then 'Desactivate'
     else ''
     end as StatusDesc,
+    case Status
+        when 'X' then 3
+        when '' then 1
+    else 0
+    end as StatusValue,
+    case 
+    when TotalProductPrice < 50 then 1
+    when TotalProductPrice > 50 and TotalProductPrice < 300 then 2
+    when TotalProductPrice > 300 then 3
+    else 0
+    end as PriceValue,
     Imageurl,
     Createdby,
     Createat,
@@ -56,5 +66,7 @@ group by
     Changeat,
     _PurchaseItems.PriceUnit,
     SupplierName,
-    Status
+    Status,
+    OTDescription,
+    TotalProductPrice
 

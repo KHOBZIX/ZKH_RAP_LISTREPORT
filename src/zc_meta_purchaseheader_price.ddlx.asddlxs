@@ -35,7 +35,7 @@ annotate entity ZC_PurchaseHeader_Price
     @UI.selectionField: [{ position: 40 }]
     @Consumption.valueHelpDefinition: [{ entity :{ name: 'ZC_SUPPLIERF4Help' ,element: 'SupplierName'}  }]
     SupplierName;
-    @UI.lineItem: [{ position: 70,label: 'Status' }]
+    @UI.lineItem: [{ position: 70,label: 'Status',criticality: 'StatusValue' }]
     StatusDesc;
 //    Imageurl;
 //    Createdby;
