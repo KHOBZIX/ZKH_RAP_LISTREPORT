@@ -74,6 +74,16 @@ purpose: #HEADER,
 type: #DATAPOINT_REFERENCE,
 targetQualifier: 'OrderDate',
 position: 10
+},
+{ 
+
+id: 'dataPoint1',
+purpose: #HEADER,
+type: #DATAPOINT_REFERENCE,
+targetQualifier: 'Sta2tus',
+position: 20
+
+
 }
  
  
@@ -90,10 +100,12 @@ position: 10
     @EndUserText.label: 'Purchase Order Type'
     @UI.selectionField: [{ position: 20 }]  
     @Consumption.valueHelpDefinition: [{ entity :{ name: 'ZC_OrderTypeF4Help' ,element: 'PoType'}  }]
-    @UI.fieldGroup: [{ position: 20,label: 'Purchase Order Type',qualifier: 'BasicGroup' }]
+    @UI.fieldGroup: [{ position: 20,label: 'Purchase Order Type',qualifier: 'BasicGroup',type: #AS_DATAPOINT }]
     PoType;
-
-//    TotalProductPrice;
+    
+   
+    @UI.dataPoint: { title:  'Total Amount' ,criticality: 'StatusValue',qualifier: 'Sta2tus'  }
+    TotalProductPrice;
 
 //    PriceUnit;
 

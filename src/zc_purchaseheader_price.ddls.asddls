@@ -25,6 +25,9 @@ define view entity ZC_PurchaseHeader_Price as select from zi_PurchaseHeader
     Company,
     
     PoOrg,
+    @Semantics.amount.currencyCode: 'PriceUnit'
+    TotalProductPrice,
+    PriceUnit,
     
     @Search.defaultSearchElement: true
     @Search.fuzzinessThreshold: 0.7
@@ -80,5 +83,5 @@ group by
     SupplierName,
     Status,
     OTDescription,
-    TotalProductPrice
-
+    TotalProductPrice,
+    PriceUnit
