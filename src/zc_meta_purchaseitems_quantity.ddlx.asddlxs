@@ -1,0 +1,104 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo:{ 
+
+typeName: 'Items Purchase Order',
+
+typeNamePlural: 'Items Purchase Orders',
+
+description:{ 
+    label: 'Items Purchase Orders',
+    type: #STANDARD,
+    value:'Material',
+    criticality: 'ProductPrice'
+},
+
+title.value: 'ShortText'
+
+}
+annotate entity ZC_PurchaseItems_Quantity
+    with 
+{
+@UI.facet: [{ 
+
+
+  id: 'coll2',
+  type: #COLLECTION,
+  position: 10,
+  label: 'Item detail',
+  purpose: #STANDARD
+ },
+ { 
+         id: 'BasicInfo',
+        purpose: #STANDARD,
+        parentId: 'coll2',
+        position: 10,
+        targetQualifier: 'ItemData',
+        type: #FIELDGROUP_REFERENCE,
+        label: 'Item Info'
+ 
+ },
+ 
+  { 
+         id: 'BasicInfo2',
+        purpose: #STANDARD,
+        parentId: 'coll2',
+        position: 20,
+        targetQualifier: 'QuanData',
+        type: #FIELDGROUP_REFERENCE,
+        label: 'Quan Info'
+ 
+ },
+ { 
+
+
+  id: 'coll3',
+  type: #COLLECTION,
+  position: 20,
+  label: 'Price detail',
+  purpose: #STANDARD
+ },
+ 
+  
+  { 
+         id: 'BasicInfo3',
+        purpose: #STANDARD,
+        parentId: 'coll3',
+        position: 20,
+        targetQualifier: 'PriceData',
+        type: #FIELDGROUP_REFERENCE,
+        label: 'Price Info'
+ 
+ }
+ 
+ ]
+@UI.lineItem: [{ position: 10 }]
+@UI.fieldGroup: [{ position: 10,label: 'PoHeader',qualifier: 'ItemData' }]
+    PoHeader;
+    @UI.lineItem: [{ position: 20 }]
+    @UI.fieldGroup: [{ position: 10,label: 'Item',qualifier: 'ItemData' }]
+    PoItem;
+    @UI.lineItem: [{ position: 30 }]
+    
+    ShortText;
+    @UI.fieldGroup: [{ position: 10,label: 'Materail',qualifier: 'ItemData' }]
+    Material;
+    @UI.fieldGroup: [{ position: 20,label: 'Plant',qualifier: 'ItemData' }]
+    Plant;
+    @UI.fieldGroup: [{ position: 30,label: 'Materail Group',qualifier: 'ItemData' }]
+    MatGroup;
+    @UI.fieldGroup: [{ position: 10,label: 'Order Quantity',qualifier: 'QuanData' }]
+    OrderQunt;
+    @UI.fieldGroup: [{ position: 20,label: 'Order Unit',qualifier: 'QuanData' }]
+    OrderUnit;
+    @UI.fieldGroup: [{ position: 10,label: 'Product Price',qualifier: 'PriceData' }]
+    ProductPrice;
+    @UI.fieldGroup: [{ position: 20,label: 'Total Price',qualifier: 'PriceData' }]
+    TotalPrice;
+    @UI.fieldGroup: [{ position: 30,label: 'Price Unit',qualifier: 'PriceData' }]
+    PriceUnit;
+//    LocalLastChangedBy;
+//    /* Associations */
+//    _Currency;
+//    _PurchaseHeader;
+}

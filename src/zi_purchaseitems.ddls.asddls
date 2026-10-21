@@ -4,7 +4,7 @@
 @Metadata.ignorePropagatedAnnotations: true
 @VDM.viewType: #BASIC
 define view entity ZI_PurchaseItems as select from zkhpoitems
-association [1] to zi_PurchaseHeader as _PurchaseHeader on $projection.PoHeader = _PurchaseHeader.PoHeader
+association [0..1] to zi_PurchaseHeader as _PurchaseHeader on $projection.PoHeader = _PurchaseHeader.PoHeader
 association [1] to I_Currency as _Currency on $projection.PriceUnit = _Currency.Currency
 {
     key po_header as PoHeader,

@@ -5,4 +5,5 @@ define service ZSD_PurchaserOrders {
   expose ZC_SUPPLIERF4Help;
   expose ZC_OrderTypeF4Help;
   expose ZC_SUPPLIER;
+  expose ZI_PurchaseItems;
 }

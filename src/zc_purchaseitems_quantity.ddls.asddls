@@ -4,10 +4,15 @@
 @Metadata.ignorePropagatedAnnotations: true
 @VDM.viewType: #COMPOSITE
 
+@Metadata.allowExtensions: true
+@Search.searchable: true
 define view entity ZC_PurchaseItems_Quantity as select from ZI_PurchaseItems
 {
 
     key PoHeader,
+    @Search.defaultSearchElement: true
+    @Search.fuzzinessThreshold: 0.7
+    @Search.ranking: #MEDIUM
     key PoItem,
     ShortText,
     Material,

@@ -3,40 +3,112 @@
 @UI.headerInfo:{ 
 
 typeName: 'Purchase Order',
+
 typeNamePlural: 'Purchase Orders',
+
 description:{ 
-label: 'Manage Purchase Orders',
-type: #STANDARD
-}
+    label: 'Manage Purchase Orders',
+    type: #STANDARD,
+    value:'OTDescription'
+},
+
+title.value: 'PoDesc',
+imageUrl: 'Imageurl'
 
 }
 annotate entity ZC_PurchaseHeader_Price
     with 
 {
+
+@UI.facet: [
+{ 
+    id: 'Collection',
+    type: #COLLECTION,
+    purpose: #STANDARD,
+    label: 'General Information'
+ },
+     { 
+        id: 'BasicInfo',
+        purpose: #STANDARD,
+        parentId: 'Collection',
+        position: 10,
+        targetQualifier: 'BasicGroup',
+        type: #FIELDGROUP_REFERENCE,
+        label: 'Basic Info'
+        
+        
+     },
+     { 
+        id: 'Datinfor',
+        purpose: #STANDARD,
+        parentId: 'Collection',
+        position: 20,
+        targetQualifier: 'DataGroup',
+        type: #FIELDGROUP_REFERENCE,
+        label: 'Company Information'
+        
+        
+     },
+     { 
+        id: 'Detail',
+        purpose: #STANDARD,
+        parentId: 'Collection',
+        position: 30,
+        targetQualifier: 'DetailGroup',
+        type: #FIELDGROUP_REFERENCE,
+        label: 'Detail Information'
+        
+        
+     },
+{
+  id            : 'Items',
+  purpose       : #STANDARD,
+  type          : #LINEITEM_REFERENCE,
+  label         : 'Items Information',
+  targetElement : '_PurchaseItems',
+  position: 20
+}
+ 
+ 
+ ]
     @UI.lineItem: [{ position: 10,label: 'Purchase Order',importance: #HIGH }]
     @UI.selectionField: [{ position: 10 }]
+    @UI.fieldGroup: [{ position: 10,label: 'Purchase Order',qualifier: 'BasicGroup' }]
     PoHeader;
 
 //    PoDesc;
+
     @UI.lineItem: [{ position: 30,label: 'Order Type' }]  
     @EndUserText.label: 'Purchase Order Type'
     @UI.selectionField: [{ position: 20 }]  
     @Consumption.valueHelpDefinition: [{ entity :{ name: 'ZC_OrderTypeF4Help' ,element: 'PoType'}  }]
+    @UI.fieldGroup: [{ position: 20,label: 'Purchase Order Type',qualifier: 'BasicGroup' }]
     PoType;
+    
 //    TotalProductPrice;
+
 //    PriceUnit;
+
     @UI.lineItem: [{ position: 40,label: 'Company' }]
     @UI.selectionField: [{ position: 30 }]   
+    @UI.fieldGroup: [{ position: 10,label: 'Company',qualifier: 'DataGroup'  }]
     Company;
+    
     @UI.lineItem: [{ position: 50,label: 'Organization' }]   
+    @UI.fieldGroup: [{ position: 20,label: 'Purchase Order Org',qualifier: 'DataGroup' }]
     PoOrg;
+    
     @UI.lineItem: [{ position: 60,label: 'Supplier',type: #AS_CONTACT,value: '_SupplierC'}]   
     @EndUserText.label: 'Vendor'
     @UI.selectionField: [{ position: 40 }]
     @Consumption.valueHelpDefinition: [{ entity :{ name: 'ZC_SUPPLIERF4Help' ,element: 'SupplierName'}  }]
+    @UI.fieldGroup: [{ position: 10 ,label: 'Supplier Name' ,qualifier: 'DetailGroup' }]
     SupplierName;
+    
     @UI.lineItem: [{ position: 70,label: 'Status',criticality: 'StatusValue' }]
+    @UI.fieldGroup: [{ position: 20,label: 'Status' ,qualifier: 'DetailGroup' ,criticality: 'StatusValue' }]
     StatusDesc;
+    
 //    Imageurl;
 //    Createdby;
 //    Createat;
