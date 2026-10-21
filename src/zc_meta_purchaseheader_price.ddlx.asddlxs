@@ -67,7 +67,15 @@ annotate entity ZC_PurchaseHeader_Price
   label         : 'Items Information',
   targetElement : '_PurchaseItems',
   position: 20
+},
+{ 
+id: 'dataPoint',
+purpose: #HEADER,
+type: #DATAPOINT_REFERENCE,
+targetQualifier: 'OrderDate',
+position: 10
 }
+ 
  
  
  ]
@@ -84,7 +92,7 @@ annotate entity ZC_PurchaseHeader_Price
     @Consumption.valueHelpDefinition: [{ entity :{ name: 'ZC_OrderTypeF4Help' ,element: 'PoType'}  }]
     @UI.fieldGroup: [{ position: 20,label: 'Purchase Order Type',qualifier: 'BasicGroup' }]
     PoType;
-    
+
 //    TotalProductPrice;
 
 //    PriceUnit;
@@ -110,7 +118,8 @@ annotate entity ZC_PurchaseHeader_Price
     StatusDesc;
     
 //    Imageurl;
-//    Createdby;
+@UI.dataPoint: { title:  'Created By' ,criticality: 'StatusValue',qualifier: 'OrderDate' }
+    Createdby;
 //    Createat;
 //    Changerby;
 //    Changeat;
@@ -119,4 +128,4 @@ annotate entity ZC_PurchaseHeader_Price
 //    _PurchaseItems;
 //    _Supplier;element_name;
 //    
-} 
+}
